@@ -12,6 +12,13 @@ const graph = {
     E: { B: 20, C: 35, F: 10 },
     F: { D: 20, E: 10 },
   };
+  const cabsFare = {
+    1: 10,
+    2: 15,
+    3: 20,
+    4: 25,
+    5: 30
+  };
 
 function calShortestDist(graph, sourceDestination, finDestination) {
     const distances = {};
@@ -61,6 +68,13 @@ function calShortestDist(graph, sourceDestination, finDestination) {
     }
     return distances[finDestination];
   }
+  const finalPrices = [];
+  function estPrice(dist){
+    for(let i = 1; i<=5; i++){
+        finPrices.push(cabsFare[i] * dist);
+    }
+    return finPrices;
+  }
 function clickHandler(){
     const pickUpVal = pickUpLoc.value.toUpperCase();
     const destLocVal = destLoc.value.toUpperCase();
@@ -70,7 +84,9 @@ function clickHandler(){
             if(pickUpVal != destLocVal){
                 if(graph.hasOwnProperty(pickUpVal) && graph.hasOwnProperty(destLocVal)){
                     const distances = calShortestDist(graph, pickUpVal, destLocVal);
+                    const price = estPrice(dist);
                     output.innerHTML = distances;
+                    // output.innerHTML = price;
                 }else{
                     output.innerHTML = "The source or destination does not exist in our database please try again!";
                 }
