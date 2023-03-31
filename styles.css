@@ -1,0 +1,82 @@
+.calculate-fare{
+    margin: auto;
+    margin-top: 1rem;
+    border: solid ;
+    background-color: var(--container-color);
+    display: block;
+    width: 30%;
+}
+
+.email{
+    display: block;
+    margin: auto;
+    margin-top: 0.5rem;
+}
+
+.pick-up-loc{
+    display: block;
+    margin: auto;
+    margin-top: 0.5rem;
+}
+
+.dest-loc{
+    display: block;
+    margin: auto;
+    margin-top: 0.5rem;
+}
+
+.cal-price-time{
+    display: block;
+    margin: auto;
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+    cursor: pointer;
+    width: 20%;
+    padding: 0.2rem;
+    border-radius: 0.2rem;
+}
+
+.output{
+    text-align: center;
+    font-size: large;
+}
+
+.email-heading{
+    display: block;
+    text-align: center;
+    font-size: large;
+}
+
+.pick-up-heading{
+    display: block;
+    text-align: center;
+    font-size: large;
+}
+
+.dest-heading{
+    display: block;
+    text-align: center;
+    font-size: large;
+}
+
+.calculate-heading{
+    display: block;
+    text-align: center;
+    font-size: large;
+}
+
+table th, td{
+    border: solid 1px;
+    padding:2%;
+}
+th{
+    width: 20%;
+}
+td{
+    width: 10%;
+}
+
+table{
+    margin-top: 1rem;
+    width: 50%;
+}
