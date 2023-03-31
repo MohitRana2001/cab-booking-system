@@ -62,8 +62,8 @@ function calShortestDist(graph, sourceDestination, finDestination) {
     return distances[finDestination];
   }
 function clickHandler(){
-    const pickUpVal = pickUpLoc.value;
-    const destLocVal = destLoc.value;
+    const pickUpVal = pickUpLoc.value.toUpperCase();
+    const destLocVal = destLoc.value.toUpperCase();
     const emailVal = emailId.value;
     if(pickUpVal && destLocVal && emailVal){
         if(emailVal.match(emailChecker)){
