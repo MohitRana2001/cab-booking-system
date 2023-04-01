@@ -1,4 +1,4 @@
-import mongoose from "mongoose";
+const mongoose =  require("mongoose");
 const { Schema } = mongoose;
 
 const cabSchema = new Schema({
@@ -22,6 +22,4 @@ const cabSchema = new Schema({
     }
 });
 
-const CabList = mongoose.model('CabList', cabSchema);
-
-module.exports = CabList;
+module.exports = cabSchema;
