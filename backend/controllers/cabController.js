@@ -9,7 +9,7 @@ function cabController(app, Models){
                 return res.status(404).json({ message: "No records found!"});
             }
         } catch (error) {
-            return res.status(500).json({ message: error });
+                return res.status(500).json({ message: error });
         }
     })
 }
