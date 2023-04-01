@@ -17,10 +17,7 @@ function beautifiedFileName(filename) {
 }
 
 async function connect() {
-  console.log("hello")
-  console.log("hrllo", process.env.MONGO_URI)
   mongoose.set("strictQuery", false);
-
   const connection = await mongoose.connect(process.env.MONGO_URI, {
     autoIndex: true,
     useNewUrlParser: true,
