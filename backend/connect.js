@@ -3,8 +3,9 @@ const util = require("util");
 const fs = require("fs");
 const pathLib = require("path");
 const _ = require("lodash");
-const location = pathLib.join(__dirname, "..", "models");
+const location = pathLib.join(__dirname, ".", "models");
 const fsReaddir = util.promisify(fs.readdir);
+require("dotenv").config();
 
 function beautifiedFileName(filename) {
   const newFileName = filename
@@ -16,7 +17,10 @@ function beautifiedFileName(filename) {
 }
 
 async function connect() {
+  console.log("hello")
+  console.log("hrllo", process.env.MONGO_URI)
   mongoose.set("strictQuery", false);
+
   const connection = await mongoose.connect(process.env.MONGO_URI, {
     autoIndex: true,
     useNewUrlParser: true,
