@@ -1,6 +1,7 @@
 const express = require("express")
 const app = express();
 const connectDB = require("./connect");
+require('dotenv').config();
 
 app.get("/", (req,res) => {
     res.send("Hello world")
