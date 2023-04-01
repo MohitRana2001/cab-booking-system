@@ -4,10 +4,10 @@ async function start(){
     const { Models } = await connectDb();
     const { CabList } = Models;
     const cabInstance = new CabList({
-        cabId: 1,
-        sourceLoc: "A",
-        price: 15,
-        cabStatus: false
+        cabId: 5,
+        sourceLoc: "E",
+        price: 5,
+        // cabStatus: false
     });
 
     console.log(cabInstance);
