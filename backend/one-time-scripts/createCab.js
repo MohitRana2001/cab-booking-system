@@ -16,4 +16,4 @@ async function start(){
     process.exit(0);
 }
 
-start();c
+start();
