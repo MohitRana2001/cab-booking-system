@@ -6,6 +6,11 @@ const output = document.querySelector(".output");
 const displayCabs = document.querySelector(".cab-status");
 const emailChecker = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
 const finalPrices = [];
+const estTime = [];
+let cabsFare = [];
+let sourceLocArray = [];
+const url = "http://localhost:3000/cabs";
+
 const graph = {
     A: { B: 5, C: 7 },
     B: { A: 5, D: 15, E: 20 },
@@ -14,83 +19,43 @@ const graph = {
     E: { B: 20, C: 35, F: 10 },
     F: { D: 20, E: 10 },
   };
-  const cabsFare = {
-    1: 10,
-    2: 15,
-    3: 20,
-    4: 25,
-    5: 30
-  };
 
 displayCabs.style.display = "none";
-function calShortestDist(graph, sourceDestination, finDestination) {
-    const distances = {};
-    const visited = {};
-    const queue = [];
-  
-    // Initialize distances and visited hashmaps
-    for (let vertex in graph) {
-      distances[vertex] = Infinity;
-      visited[vertex] = false;
-    }
-  
-    // Set distance from sourceDestination to sourceDestination as 0
-    distances[sourceDestination] = 0;
-  
-    // Add sourceDestination vertex to the queue
-    queue.push(sourceDestination);
-  
-    // Loop until queue is empty
-    while (queue.length) {
-      // Get the vertex with the minimum distance
-      let currentVertex = queue.shift();
-  
-      // Mark the current vertex as visited
-      visited[currentVertex] = true;
-  
-      // Loop through the neighbors of the current vertex
-      for (let neighbor in graph[currentVertex]) {
-        // Calculate the distance to the neighbor
-        let distance = graph[currentVertex][neighbor];
-  
-        // Check if the neighbor is not visited and the distance is not 0
-        if (!visited[neighbor] && distance !== 0) {
-          // Calculate the total distance from sourceDestination to the neighbor
-          let totalDistance = distances[currentVertex] + distance;
-  
-          // Check if the total distance is less than the current distance
-          if (totalDistance < distances[neighbor]) {
-            // Update the distance of the neighbor
-            distances[neighbor] = totalDistance;
-  
-            // Add the neighbor to the queue
-            queue.push(neighbor);
-          }
-        }
-      }
-    }
-    return distances[finDestination];
-  }
-  function estPrice(dist){
-    for(let i = 1; i<=5; i++){
-        finalPrices.push(cabsFare[i] * dist);
-    }
-    return finalPrices;
-  }
-  const estTime = calShortestDist(graph, sourceDestination, cabDestination);
+
 function clickHandler(){
     const pickUpVal = pickUpLoc.value.toUpperCase();
     const destLocVal = destLoc.value.toUpperCase();
     const emailVal = emailId.value;
+    function calEstTime(sourceLocArray){
+      sourceLocArray.forEach(sourceLoc => {
+        estTime.push(window.calShortestDist(graph, pickUpVal, sourceLoc))
+      })
+      return estTime; 
+    }
+    function estPrice(dist){
+      for(let i = 0; i<5; i++){
+          finalPrices.push(cabsFare[i] * dist);
+      }
+      return finalPrices;
+    }
+
     if(pickUpVal && destLocVal && emailVal){
         if(emailVal.match(emailChecker)){
             if(pickUpVal != destLocVal){
                 if(graph.hasOwnProperty(pickUpVal) && graph.hasOwnProperty(destLocVal)){
                     const distances = calShortestDist(graph, pickUpVal, destLocVal);
-                    const price = estPrice(distances);
-                    output.innerHTML = distances;
-                    displayCabs.style.display = "block";
-                    output.innerHTML = price;
+                    console.log(distances);
+                    axios.get(url)
+                    .then(({ data: { cabInstances}}) => {
+                      sourceLocArray = cabInstances.map(cab => cab.sourceLoc);
+                      cabsFare = cabInstances.map(cab => cab.price);
+                      console.log(calEstTime(sourceLocArray));
+                      console.log(cabsFare);
+                      const price = estPrice(distances);
+                      console.log(price);
+                    });
+                    // displayCabs.style.display = "block";
+                    // output.innerHTML = price;
                 }else{
                     output.innerHTML = "The source or destination does not exist in our database please try again!";
                 }
@@ -104,5 +69,5 @@ function clickHandler(){
         output.innerHTML = "Please enter all values to proceed further";
     }
 }
-
+// console.log(sourceLocArray)
 calFare.addEventListener('click', clickHandler);
