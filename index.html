@@ -7,6 +7,8 @@
     <link rel="stylesheet" href="styles.css">
     <title>Cab Booking System</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.3.4/axios.min.js" defer></script>
+    <script src="cal-shortest-dist.js" defer></script>
+    <script src="index.js" defer></script>
 </head>
 <body>
     <div class="calculate-fare">
@@ -30,9 +32,9 @@
               <th>Book a cab</th>
             </tr>
             <tr>
-              <td>1</td>
-              <td>B</td>
-              <td>INR 10/mins</td>
+              <td class="cab-id">1</td>
+              <td class="cab-sourceLoc">B</td>
+              <td class ="cab-pricing">INR 10/mins</td>
               <td>Unbooked</td>
               <td><button>Book</button></td>
             </tr>
@@ -66,8 +68,5 @@
             </tr>
           </table>
     </div>
-    
-
-    <script src="index.js"></script>
 </body>
 </html>
