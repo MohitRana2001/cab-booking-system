@@ -3,7 +3,9 @@ const destLoc = document.querySelector(".dest-loc");
 const emailId = document.querySelector(".email");
 const calFare = document.querySelector(".cal-price-time");
 const output = document.querySelector(".output");
+const displayCabs = document.querySelector(".cab-status");
 const emailChecker = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+const finalPrices = [];
 const graph = {
     A: { B: 5, C: 7 },
     B: { A: 5, D: 15, E: 20 },
@@ -20,6 +22,7 @@ const graph = {
     5: 30
   };
 
+displayCabs.style.display = "none";
 function calShortestDist(graph, sourceDestination, finDestination) {
     const distances = {};
     const visited = {};
@@ -68,13 +71,13 @@ function calShortestDist(graph, sourceDestination, finDestination) {
     }
     return distances[finDestination];
   }
-  const finalPrices = [];
   function estPrice(dist){
     for(let i = 1; i<=5; i++){
-        finPrices.push(cabsFare[i] * dist);
+        finalPrices.push(cabsFare[i] * dist);
     }
-    return finPrices;
+    return finalPrices;
   }
+  const estTime = calShortestDist(graph, sourceDestination, cabDestination);
 function clickHandler(){
     const pickUpVal = pickUpLoc.value.toUpperCase();
     const destLocVal = destLoc.value.toUpperCase();
@@ -84,9 +87,10 @@ function clickHandler(){
             if(pickUpVal != destLocVal){
                 if(graph.hasOwnProperty(pickUpVal) && graph.hasOwnProperty(destLocVal)){
                     const distances = calShortestDist(graph, pickUpVal, destLocVal);
-                    const price = estPrice(dist);
+                    const price = estPrice(distances);
                     output.innerHTML = distances;
-                    // output.innerHTML = price;
+                    displayCabs.style.display = "block";
+                    output.innerHTML = price;
                 }else{
                     output.innerHTML = "The source or destination does not exist in our database please try again!";
                 }
