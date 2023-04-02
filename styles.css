@@ -1,10 +1,44 @@
+@import url('https://fonts.googleapis.com/css?family=Quicksand:400,500,700'); 
+
+#main{
+    display: flex;
+    flex-direction: row;
+    background-image: url('background2.png');
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+.box{
+    height: 709px;
+}
+
+
 .calculate-fare{
-    margin: auto;
-    margin-top: 1rem;
-    border: solid ;
-    background-color: var(--container-color);
-    display: block;
-    width: 30%;
+    margin-top: 10%;
+    display: flex;
+    flex-direction: column;
+    align-content: space-around;
+    width: 50%;
+}
+.display-cabs{
+    margin-top: 10%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: column;
+    width: 50%;
+}
+
+h1{
+    margin-top: 0%;
+    margin-bottom: 10px;
+    font-size: 45px;
+    font-family: 'Times New Roman', Times, serif;
+    text-align: center;
+}
+h2{
+    font-size: 30px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
 .email{
@@ -26,7 +60,8 @@
 }
 
 .cal-price-time{
-    display: block;
+    display: flex;
+    align-self: center;
     margin: auto;
     margin-top: 0.5rem;
     margin-bottom: 0.5rem;
@@ -40,7 +75,12 @@
     text-align: center;
     font-size: large;
 }
-
+.input{
+    margin: 0.4%;
+    padding: 2%;
+    display: flex;
+    flex-direction: column;
+}
 .email-heading{
     display: block;
     text-align: center;
@@ -74,9 +114,132 @@ th{
 }
 td{
     width: 10%;
+    height: 30px;
 }
 
 table{
     margin-top: 1rem;
-    width: 50%;
+    width: 70%;
+}
+
+
+
+
+.nav {
+    width: 100%;
+    height: 65px;
+    position: fixed;
+    line-height: 65px;
+    text-align: center;
+    font-family: "Quicksand", sans-serif;
+    background: #1D1F20;
+    box-shadow: 0 0 50px black;
+}
+
+.nav div.logo {
+    float: left;
+    width: auto;
+    height: auto;
+    padding-left: 6rem;
+}
+
+.nav div.logo a {
+    text-decoration: none;
+    color: aqua;
+    font-size: 2rem;
+    font-weight: bolder;
+}
+
+.nav div.logo a:hover {
+    color: #00E676;
+}
+
+.nav div.main_list {
+    height: 65px;
+    float: right;
+}
+
+.nav div.main_list ul {
+    width: 100%;
+    height: 65px;
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.nav div.main_list ul li {
+    width: auto;
+    height: 65px;
+    padding: 0;
+    padding-right: 3rem;
+}
+
+.nav div.main_list ul li a {
+    text-decoration: none;
+    color: aqua;
+    line-height: 65px;
+    font-size: 1.4rem;
+}
+
+.nav div.main_list ul li a:hover {
+    color: #00E676;
+}
+
+
+.button {
+    font-size: 1em;
+    border-radius: 1.25em;
+    background-color: #5dbaf0;
+    background-image: -webkit-linear-gradient(hsla(0,0%,100%,.05), hsla(0,0%,0%,.1));
+    background-image:    -moz-linear-gradient(hsla(0,0%,100%,.05), hsla(0,0%,0%,.1));
+    background-image:     -ms-linear-gradient(hsla(0,0%,100%,.05), hsla(0,0%,0%,.1));
+    background-image:      -o-linear-gradient(hsla(0,0%,100%,.05), hsla(0,0%,0%,.1));
+    background-image:         linear-gradient(hsla(0,0%,100%,.05), hsla(0,0%,0%,.1));
+    border: none;
+    box-shadow: inset 0 0 0 1px hsla(0,0%,0%,.2),
+                inset 0 2px 0 hsla(0,0%,100%,.1),
+                inset 0 1.2em 0 hsla(0,0%,100%,0.1),
+                inset 0 -.2em 0 hsla(0,0%,100%,.1),
+                inset 0 -.25em 0 hsla(0,0%,0%,.25),
+                0 .25em .25em hsla(0,0%,0%,.05);
+    color: #444;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    font-family: sans-serif;
+    font-size: 1em;
+    font-weight: bold;
+    line-height: 1.5;
+    margin: 0.5em 1em;
+    padding: .5em 1.5em .75em;
+    position: relative;
+    text-decoration: none;
+    text-shadow: 0 1px 1px hsla(0,0%,100%,.25);
+   
+}
+.button:hover {
+    outline: none;
+}
+.button:hover,
+.button:focus {
+    box-shadow: inset 0 0 0 1px hsla(0,0%,0%,.2),
+                inset 0 2px 0 hsla(0,0%,100%,.1),
+                inset 0 1.2em 0 hsla(0,0%,100%,.1),
+                inset 0 -.2em 0 hsla(0,0%,100%,.1),
+                inset 0 -.25em 0 hsla(0,0%,0%,.25),
+                inset 0 0 0 3em hsla(0,0%,100%,.2),
+                0 .25em .25em hsla(0,0%,0%,.05);
+}
+.button:active {
+    box-shadow: inset 0 0 0 1px hsla(0,0%,0%,.2),
+                inset 0 2px 0 hsla(0,0%,100%,.1),
+                inset 0 1.2em 0 hsla(0,0%,100%,.1),
+                inset 0 0 0 3em hsla(0,0%,100%,.2),
+                inset 0 .25em .5em hsla(0,0%,0%,.05),
+                0 -1px 1px hsla(0,0%,0%,.1),
+                0 1px 1px hsla(0,0%,100%,.25);
+    margin-top: .25em;
+    outline: none;
+    padding-bottom: .5em;
 }
