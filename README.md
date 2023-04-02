@@ -14,11 +14,12 @@ Pull this repository on your system.
 
 Download the required dependencies on your system.
 
- Example:
-    ``` npm i express mongoose ```
+Run these command to install required dependencies:
+    ``` npm i  ```
 
-Run the script on your system
-    ``` npm start ```
+Fire up the server using the below script and open the index.html simultaneously  
+
+SCRIPT:    ``` npm start ```
     (it will run the command nodemon app.js)
 
 
@@ -66,6 +67,8 @@ MONGOOSE
 EXPRESSJS
 
 MONGODB
+
+
 
 
 
