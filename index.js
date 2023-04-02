@@ -4,7 +4,7 @@ const emailId = document.querySelector(".email");
 const calFare = document.querySelector(".cal-price-time");
 const output = document.querySelector(".output");
 const displayCabs = document.querySelector(".display-cabs");
-
+const thankYouMsg = document.querySelector(".ty-msg");
 const cabsPrice = document.querySelectorAll(".cab-pricing");
 const cabSourceLoc = document.querySelectorAll(".cab-sourceLoc");
 const cabId = document.querySelectorAll(".cab-id");
@@ -32,17 +32,21 @@ const graph = {
   };
 
 displayCabs.style.display = "none";
-
+let price = [];
+let minTime = 0;
 function bookNowHandler(event){
+  const pickUpVal = pickUpLoc.value.toUpperCase();
+  const destLocVal = destLoc.value.toUpperCase();
+  const emailVal = emailId.value;
   const newCabId = event.target.parentNode.previousElementSibling.innerHTML;
   const cabData = { newCabId, destLocVal, cabStatus: true}
   const cabPrice = price[newCabId-1];
-  console.log(cabPrice)
-  // axios.put(urlUpdateCab, cabData)
-  // .then(res => console.log(res));
-  // const userData = { emailVal, pickUpVal, destLocVal, minTime, cabPrice};
-  // axios.post(urlCreateUser, userData)
-  // .then(res => console.log(res));
+  axios.put(urlUpdateCab, cabData)
+  .then(res => console.log(res));
+  const userData = { emailVal, pickUpVal, destLocVal, minTime, cabPrice };
+  axios.post(urlCreateUser, userData)
+  .then(res => console.log(res));
+  thankYouMsg.innerHTML = "Thank you for using our services! Enjoy your journey";
 }
 
 function clickHandler(){
@@ -61,18 +65,17 @@ function clickHandler(){
       }
       return finalPrices;
     }
-
     if(pickUpVal && destLocVal && emailVal){
         if(emailVal.match(emailChecker)){
             if(pickUpVal != destLocVal){
                 if(graph.hasOwnProperty(pickUpVal) && graph.hasOwnProperty(destLocVal)){
-                    const minTime = calShortestDist(graph, pickUpVal, destLocVal);
+                    minTime = calShortestDist(graph, pickUpVal, destLocVal);
                     axios.get(urlGetCabs)
                     .then(({ data: { cabInstances }}) => {
                       sourceLocArray = cabInstances.map(cab => cab.sourceLoc);
                       cabsFare = cabInstances.map(cab => cab.price);
                       const estTimeArr = calEstTime(sourceLocArray);
-                      const price = estPrice(minTime);
+                      price = estPrice(minTime);
                       cabsPrice.forEach((item,index) => {
                         item.innerHTML = price[index];
                       })
@@ -92,7 +95,7 @@ function clickHandler(){
                           item.innerHTML = "Booked";
                         }
                       })
-                      displayCabs.style.display = "block";
+                      displayCabs.style.display = "flex";
                     });
                 }else{
                     output.innerHTML = "The source or destination does not exist in our database please try again!";
