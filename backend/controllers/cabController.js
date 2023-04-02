@@ -13,8 +13,11 @@ function cabController(app, Models){
         }
     });
     app.put("/updateCab", async (req,res)=> {
-        const cabInfo = req.body;
-        const updatedCab = await CabList.put(filter, data);
+        const { newCabId, destLocVal, cabStatus } = req.body;
+        const updatedCab = await CabList.findOneAndUpdate({ cabId: newCabId }, {
+            sourceLoc : destLocVal,
+            cabStatus : cabStatus
+        });
         try {
             if(updatedCab){
                 return res.status(200).json( { message: "The cab is updated"}) // add cab ID
