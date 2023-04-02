@@ -19,8 +19,9 @@ Run these command to install required dependencies:
 
 Fire up the server using the below script and open the index.html simultaneously  
 
-SCRIPT:    ``` npm start ```
-    (it will run the command nodemon app.js)
+SCRIPT:    ``` npm start ``` 
+(run this script in backend directory)
+(it will run the command nodemon app.js)
 
 
 
