@@ -3,13 +3,24 @@ const destLoc = document.querySelector(".dest-loc");
 const emailId = document.querySelector(".email");
 const calFare = document.querySelector(".cal-price-time");
 const output = document.querySelector(".output");
-const displayCabs = document.querySelector(".cab-status");
+const displayCabs = document.querySelector(".display-cabs");
+
+const cabsPrice = document.querySelectorAll(".cab-pricing");
+const cabSourceLoc = document.querySelectorAll(".cab-sourceLoc");
+const cabId = document.querySelectorAll(".cab-id");
+const cabETA = document.querySelectorAll(".cab-eta");
+const cabStatus = document.querySelectorAll(".cab-status");
+const bookNow = document.querySelectorAll(".book-now");
+const cabTable = document.querySelector(".cabs");
+
 const emailChecker = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
 const finalPrices = [];
 const estTime = [];
 let cabsFare = [];
 let sourceLocArray = [];
-const url = "http://localhost:3000/cabs";
+const urlGetCabs = "http://localhost:3000/cabs";
+const urlCreateUser = "http://localhost:3000/bookCab";
+const urlUpdateCab = "http://localhost:3000/updateCab";
 
 const graph = {
     A: { B: 5, C: 7 },
@@ -21,6 +32,18 @@ const graph = {
   };
 
 displayCabs.style.display = "none";
+
+function bookNowHandler(event){
+  const newCabId = event.target.parentNode.previousElementSibling.innerHTML;
+  const cabData = { newCabId, destLocVal, cabStatus: true}
+  const cabPrice = price[newCabId-1];
+  console.log(cabPrice)
+  // axios.put(urlUpdateCab, cabData)
+  // .then(res => console.log(res));
+  // const userData = { emailVal, pickUpVal, destLocVal, minTime, cabPrice};
+  // axios.post(urlCreateUser, userData)
+  // .then(res => console.log(res));
+}
 
 function clickHandler(){
     const pickUpVal = pickUpLoc.value.toUpperCase();
@@ -43,19 +66,34 @@ function clickHandler(){
         if(emailVal.match(emailChecker)){
             if(pickUpVal != destLocVal){
                 if(graph.hasOwnProperty(pickUpVal) && graph.hasOwnProperty(destLocVal)){
-                    const distances = calShortestDist(graph, pickUpVal, destLocVal);
-                    console.log(distances);
-                    axios.get(url)
-                    .then(({ data: { cabInstances}}) => {
+                    const minTime = calShortestDist(graph, pickUpVal, destLocVal);
+                    axios.get(urlGetCabs)
+                    .then(({ data: { cabInstances }}) => {
                       sourceLocArray = cabInstances.map(cab => cab.sourceLoc);
                       cabsFare = cabInstances.map(cab => cab.price);
-                      console.log(calEstTime(sourceLocArray));
-                      console.log(cabsFare);
-                      const price = estPrice(distances);
-                      console.log(price);
+                      const estTimeArr = calEstTime(sourceLocArray);
+                      const price = estPrice(minTime);
+                      cabsPrice.forEach((item,index) => {
+                        item.innerHTML = price[index];
+                      })
+                      cabSourceLoc.forEach((item,index) => {
+                        item.innerHTML = sourceLocArray[index];
+                      })
+                      cabETA.forEach((item,index) => {
+                        item.innerHTML = estTimeArr[index];
+                      })
+                      cabId.forEach((item,index) => {
+                        item.innerHTML = cabInstances[index].cabId;
+                      })
+                      cabStatus.forEach((item,index)=>{
+                        if(!cabInstances[index].cabStatus){
+                          item.innerHTML = "Unbooked";
+                        }else{
+                          item.innerHTML = "Booked";
+                        }
+                      })
+                      displayCabs.style.display = "block";
                     });
-                    // displayCabs.style.display = "block";
-                    // output.innerHTML = price;
                 }else{
                     output.innerHTML = "The source or destination does not exist in our database please try again!";
                 }
@@ -69,5 +107,6 @@ function clickHandler(){
         output.innerHTML = "Please enter all values to proceed further";
     }
 }
-// console.log(sourceLocArray)
+
 calFare.addEventListener('click', clickHandler);
+cabTable.addEventListener('click',bookNowHandler);
