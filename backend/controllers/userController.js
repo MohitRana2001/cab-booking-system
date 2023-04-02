@@ -1,16 +1,18 @@
 function userController(app, Models){
     const { User } = Models;
     app.post("/bookCab", async (req,res) => {
-        const { email, source, destination, price, time} = req.body;
-        try{
-            const user = await User.create(({
-            email,
-            source,
-            destination,
-            price,
-            time
+        const { emailVal, pickUpVal, destLocVal, cabPrice, minTime } = req.body;
+        const user = await User.create(({
+            email : emailVal,
+            source : pickUpVal,
+            destination : destLocVal,
+            price : cabPrice,
+            time : minTime
         }));
-        return res.status(201).json({ message: "Created", email: email})
+        try{
+            if(user){
+                return res.status(201).json({ message: "Created"});
+            }
         }catch(error){
             console.log(error)
         }
