@@ -11,68 +11,93 @@
     <script src="index.js" defer></script>
 </head>
 <body>
-    <div class="calculate-fare">
-        <label class="email-heading">Enter your email ID: </label>
-        <input class="email" type="email">
-        <label class="pick-up-heading">Enter your pickup location: </label>
-        <input class="pick-up-loc" type="text">
-        <label class="dest-heading">Enter your destination: </label>
-        <input class="dest-loc" type="text">
-        <label class="calculate-heading">Calculate price and shortest distance</label>
-        <input class= "cal-price-time" type="button" value="Available Cabs">
-        <div class="output"></div>
-    </div>
-    <div class="display-cabs">
-        <table class="cabs">
-            <tr>
-              <th>Cab ID</th>
-              <th>Cab location</th>
-              <th>Cab price</th>
-              <th>Cab Status</th>
-              <th>Estimated time arrival</th>
-              <th>Book a cab</th>
-            </tr>
-            <tr>
-              <td class="cab-sourceLoc"></td>
-              <td class ="cab-pricing"></td>
-              <td class="cab-status"></td>
-              <td class="cab-eta"></td>
-              <td class="cab-id"></td>
-              <td><button class="book-now">Book</button></td>
-            </tr>
-            <tr>
-                <td class="cab-sourceLoc"></td>
-                <td class ="cab-pricing"></td>
-                <td class="cab-status"></td>
-                <td class="cab-eta"></td>
-                <td class="cab-id"></td>
-                <td><button class="book-now">Book</button></td>
-            </tr>
-            <tr>
-                <td class="cab-sourceLoc"></td>
-                <td class ="cab-pricing"></td>
-                <td class="cab-status"></td>
-                <td class="cab-eta"></td>
-                <td class="cab-id"></td>
-                <td><button class="book-now">Book</button></td>
-            </tr>
-            <tr>
-                <td class="cab-sourceLoc"></td>
-                <td class ="cab-pricing"></td>
-                <td class="cab-status"></td>
-                <td class="cab-eta"></td>
-                <td class="cab-id"></td>
-                <td><button class="book-now">Book</button></td>
-            </tr>
-            <tr>
-                <td class="cab-sourceLoc"></td>
-                <td class ="cab-pricing"></td>
-                <td class="cab-status"></td>
-                <td class="cab-eta"></td>                
-                <td class="cab-id"></td>
-                <td><button class="book-now">Book</button></td>
-            </tr>
-        </table>
+    <div id="main" class="box">
+        <nav class="nav">
+			<div class="container">
+				<div class="logo">
+					<a href="#">RideEZ - book your cab in 2 clicks</a>
+				</div>
+			</div>
+		</nav>
+
+
+        <div class="calculate-fare">
+            <h1>Reach Your destinations</h1>
+
+            <div class="input">
+                <label class="email-heading">Enter your email ID: </label>
+                <input class="email" type="email">
+            </div>
+            <div class="input">
+                <label class="pick-up-heading">Enter your pickup location: </label>
+                <input class="pick-up-loc" type="text">
+            </div>
+            <div class="input">
+                <label class="dest-heading">Enter your destination: </label>
+                <input class="dest-loc" type="text">
+            </div>
+            <div class="input">
+                <label class="calculate-heading">Calculate price and shortest distance</label>
+                <input class= "cal-price-time button" type="button" value="Available Cabs">
+            </div>
+            
+            <div class="output"></div>
+        </div>
+
+        <div class="display-cabs">
+            <h2>Cabs Near You</h2>
+            <table class="cabs">
+                <tr>
+                    <th>Cab location</th>
+                    <th>Cab price</th>
+                    <th>Cab Status</th>
+                    <th>Estimated time arrival</th>
+                    <th>Cab ID</th>
+                  <th>Book a cab</th>
+                </tr>
+                <tr>
+                  <td class="cab-sourceLoc"></td>
+                  <td class ="cab-pricing"></td>
+                  <td class="cab-status"></td>
+                  <td class="cab-eta"></td>
+                  <td class="cab-id"></td>
+                  <td><button class="book-now">Book</button></td>
+                </tr>
+                <tr>
+                    <td class="cab-sourceLoc"></td>
+                    <td class ="cab-pricing"></td>
+                    <td class="cab-status"></td>
+                    <td class="cab-eta"></td>
+                    <td class="cab-id"></td>
+                    <td><button class="book-now">Book</button></td>
+                </tr>
+                <tr>
+                    <td class="cab-sourceLoc"></td>
+                    <td class ="cab-pricing"></td>
+                    <td class="cab-status"></td>
+                    <td class="cab-eta"></td>
+                    <td class="cab-id"></td>
+                    <td><button class="book-now">Book</button></td>
+                </tr>
+                <tr>
+                    <td class="cab-sourceLoc"></td>
+                    <td class ="cab-pricing"></td>
+                    <td class="cab-status"></td>
+                    <td class="cab-eta"></td>
+                    <td class="cab-id"></td>
+                    <td><button class="book-now">Book</button></td>
+                </tr>
+                <tr>
+                    <td class="cab-sourceLoc"></td>
+                    <td class ="cab-pricing"></td>
+                    <td class="cab-status"></td>
+                    <td class="cab-eta"></td>                
+                    <td class="cab-id"></td>
+                    <td><button class="book-now">Book</button></td>
+                </tr>
+            </table>
+            <div class="ty-msg"></div>
+        </div>
     </div>
 </body>
 </html>
