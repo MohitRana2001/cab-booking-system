@@ -73,9 +73,11 @@ MONGODB
 
 ## SCREENSHOTS
 
-![HOME PAGE](./images/homePage.png)
-![CABS TABLE](./images/cabsTable.png)
-![DATABASE OF CABS](./images/databaseOfCabs.png)
+![HOME PAGE](https://drive.google.com/file/d/1trKkInKq9SNQX6sk7mBcBPDBRizs5Cqu/view?usp=share_link)
+
+![CABS TABLE](https://drive.google.com/file/d/1q5QSyhgtdhETHRunflfo-IUwNZASa22g/view?usp=share_link)
+
+![DATABASE OF CABS](https://drive.google.com/file/d/1Zeup05v6v4fSS8R3ohI1HtQOzwN6kb1m/view?usp=share_link)
 
 
 
