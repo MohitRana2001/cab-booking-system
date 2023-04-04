@@ -53,6 +53,8 @@ After running the above commands successfuly on your system perform these instru
 
 6.Now you can choose between these cabs according to your requirements and enjoy your journey.
 
+7.Bonus Point: You can change the prices, source destination and booked status of cabs from mongoDB database.
+
 ## TECHNOLOGIES USED
 
 HTML
