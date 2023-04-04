@@ -71,6 +71,12 @@ EXPRESSJS
 
 MONGODB
 
+## SCREENSHOTS
+
+![HOME PAGE](./images/homePage.png)
+![CABS TABLE](./images/cabsTable.png)
+![DATABASE OF CABS](./images/databaseOfCabs.png)
+
 
 
 
