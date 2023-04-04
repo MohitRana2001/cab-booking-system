@@ -46,7 +46,7 @@ function bookNowHandler(event){
   const userData = { emailVal, pickUpVal, destLocVal, minTime, cabPrice };
   axios.post(urlCreateUser, userData)
   .then(res => console.log(res));
-  thankYouMsg.innerHTML = "Thank you for using our services! Enjoy your journey";
+  thankYouMsg.innerHTML = "Thank you for using our services! Enjoy your journey"
 }
 
 function clickHandler(){
@@ -70,6 +70,7 @@ function clickHandler(){
             if(pickUpVal != destLocVal){
                 if(graph.hasOwnProperty(pickUpVal) && graph.hasOwnProperty(destLocVal)){
                     minTime = calShortestDist(graph, pickUpVal, destLocVal);
+                    output.innerHTML = "Minimum time to reach your destination is " + minTime + " mins";
                     axios.get(urlGetCabs)
                     .then(({ data: { cabInstances }}) => {
                       sourceLocArray = cabInstances.map(cab => cab.sourceLoc);
